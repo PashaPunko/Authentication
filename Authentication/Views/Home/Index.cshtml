@@ -1,0 +1,60 @@
+﻿@model Authentication.Models.Users
+@{
+    ViewBag.Title = "Список пользователей";
+}
+
+<form method="post" name="form_name" id="form_name" class="form-table">
+    <div class="tumblar">
+        <button asp-controller="Home" asp-action="Block" class="btn btn-danger">Block</button>
+        <button asp-controller="Home" asp-action="Unblock"  class="btn btn-success">Unblock</button>
+        <button asp-controller="Home" asp-action="Delete" class="btn btn-dark">Delete</button>
+    </div>
+    <div style="overflow-x: auto">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <lable for="main_check" id="mark" style="display:inline-block">Mark all</lable>
+                    <lable for="main_check" id="unmark" style="display:none">Unmark all</lable>
+                    <input type="checkbox" onchange="sel_all2('form_name')" name="main_check">
+                </th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Signin Date</th>
+                <th>Login Date</th>
+                <th>Status</th>
+            </tr>
+            @for (int i = 0; i < Model.users.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" asp-for="users[i].IsChecked" id="cheks">
+                    </td>
+                    <td>@Model.users[i].Id <input type="hidden" asp-for="users[i].Id" /></td>
+                    <td>@Model.users[i].UserName</td>
+                    <td>@Model.users[i].Email</td>
+                    <td>@Model.users[i].RegisterDate</td>
+                    <td>@Model.users[i].LoginDate</td>
+                    <td>@Model.users[i].Status</td>
+                </tr>
+            }
+        </table>
+    </div>
+</form>
+
+<script>
+    function sel_all2(name_of_form) {
+        document.getElementById(name_of_form).cheks.forEach(el => {
+            el.checked = document.getElementById(name_of_form).main_check.checked
+        })
+        if (document.getElementById(name_of_form).main_check.checked) {
+            document.getElementById('mark').style.display = 'none';
+            document.getElementById('unmark').style.display = 'inline-block';
+        }
+        else {
+            document.getElementById('mark').style.display = 'inline-block';
+            document.getElementById('unmark').style.display = 'none';
+            
+        }
+    }
+</script>

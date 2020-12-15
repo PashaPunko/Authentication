@@ -1,0 +1,49 @@
+﻿@model Authentication.ViewModels.SigninViewModel
+    <div class="row justify-content-center">
+        <form method="post" asp-controller="Account" asp-action="Signin" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-12">
+                    <h2>Sign In</h2>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-row">
+                <label class="col-4 control-label">Name</label>
+                <div class="col-8">
+                    <input class="form-control" placeholder="Логин" asp-for="Name">
+                    <span asp-validation-for="Name"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <label asp-for="Email" class="col-4 control-label"></label>
+                <div class="col-8">
+                    <input class="form-control" placeholder="Email" asp-for="Email">
+                    <span asp-validation-for="Email"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <label asp-for="Password" class="col-4 control-label"></label>
+                <div class="col-8">
+                    <input class="form-control" placeholder="Password" asp-for="Password">
+                    <span asp-validation-for="Password"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <label asp-for="PasswordConfirm" class="col-4 control-label"></label>
+                <div class="col-8">
+                    <input class="form-control" placeholder="PasswordConfirm" asp-for="PasswordConfirm">
+                    <span asp-validation-for="PasswordConfirm"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-9">
+                    <a asp-controller="Account" asp-action="Login">Log In</a>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-lg-offset-2 col-9">
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </div>
+            </div>
+</form>
+    </div>

@@ -1,0 +1,36 @@
+﻿@model Authentication.ViewModels.LoginViewModel
+
+<div class="row justify-content-center">
+    <form method="post" asp-controller="Account" asp-action="Login" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-12">
+                <h2>Log In</h2>
+            </div>
+        </div>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-row">
+            <label class="col-4 control-label">Name</label>
+            <div class="col-8">
+                <input class="form-control" placeholder="Логин" asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <label asp-for="Password" class="col-4 control-label"></label>
+            <div class="col-8">
+                <input class="form-control" placeholder="Password" asp-for="Password">
+                <span asp-validation-for="Password"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-9">
+                <a asp-controller="Account" asp-action="Signin">Sign In</a>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-offset-2 col-9">
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </div>
+        </div>
+    </form>
+</div>
